@@ -1,0 +1,513 @@
+.aco-export-orders-container {
+    margin: 20px 0;
+    max-width: 1200px;
+}
+
+.aco-export-form {
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.aco-form-row {
+    margin-bottom: 24px;
+}
+
+/* Modern Date Picker Styles */
+.aco-date-range-picker {
+    background: #f9fafb;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.aco-date-range-picker h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.aco-date-inputs {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.aco-date-field {
+    flex: 1;
+    min-width: 200px;
+}
+
+.aco-date-field label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.aco-date-field input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #fff;
+    transition: all 0.2s;
+}
+
+.aco-date-field input:focus {
+    border-color: #2271b1;
+    box-shadow: 0 0 0 2px rgba(34, 113, 177, 0.2);
+    outline: none;
+}
+
+/* Date Picker Enhanced Styles */
+.aco-date-picker-wrapper {
+    position: relative;
+}
+
+.aco-date-input {
+    width: 100%;
+    padding: 12px;
+    padding-right: 36px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #fff;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.aco-date-input:focus {
+    border-color: #2271b1;
+    box-shadow: 0 0 0 2px rgba(34, 113, 177, 0.2);
+    outline: none;
+}
+
+.aco-calendar-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #6b7280;
+}
+
+.aco-date-picker-container {
+    width: 100%;
+}
+
+.aco-date-picker-container.focused .aco-date-input {
+    border-color: #2271b1;
+    box-shadow: 0 0 0 2px rgba(34, 113, 177, 0.2);
+}
+
+.aco-date-presets {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+}
+
+.aco-date-preset-btn {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 13px;
+    color: #4b5563;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.aco-date-preset-btn:hover {
+    background: #f3f4f6;
+    border-color: #d1d5db;
+}
+
+/* New Date Range Picker Styles */
+.aco-date-display {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.aco-date-display:hover {
+    border-color: #d1d5db;
+    background-color: #f9fafb;
+}
+
+.aco-date-display-input {
+    display: flex;
+    align-items: center;
+}
+
+.aco-date-display-icon {
+    margin-right: 12px;
+    color: #6b7280;
+}
+
+.aco-date-display-text {
+    flex: 1;
+    font-size: 14px;
+    color: #1f2937;
+}
+
+.aco-date-display-arrow {
+    color: #6b7280;
+}
+
+.aco-date-range-calendar-container {
+    position: relative;
+    margin-top: 8px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    padding: 16px;
+    z-index: 10;
+}
+
+.aco-date-range-presets {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.aco-date-range-calendar {
+    width: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+.aco-date-range-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16px;
+}
+
+.aco-date-range-apply-btn {
+    background: #2271b1;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.aco-date-range-apply-btn:hover {
+    background: #135e96;
+}
+
+/* React Date Range Styles */
+.rdrCalendarWrapper {
+    font-size: 14px;
+    width: 100%;
+}
+
+.rdrMonth {
+    width: 100%;
+}
+
+.rdrDateDisplayWrapper {
+    background-color: #f9fafb;
+}
+
+.rdrDateDisplay {
+    margin: 0.8em;
+}
+
+.rdrDateDisplayItem {
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.rdrDateDisplayItem input {
+    color: #1f2937;
+}
+
+.rdrDayToday .rdrDayNumber span:after {
+    background: #2271b1;
+}
+
+.rdrDayDisabled {
+    background-color: #f3f4f6;
+}
+
+.rdrDayDisabled .rdrDayNumber span {
+    color: #9ca3af;
+}
+
+.rdrMonthAndYearWrapper {
+    padding-top: 10px;
+}
+
+.rdrMonthAndYearPickers select {
+    background-color: #fff;
+}
+
+.rdrMonthPicker select, .rdrYearPicker select {
+    color: #1f2937;
+}
+
+.rdrNextPrevButton {
+    background: #f9fafb;
+}
+
+.rdrNextPrevButton:hover {
+    background: #f3f4f6;
+}
+
+.rdrDefinedRangesWrapper {
+    border-right: 1px solid #e5e7eb;
+    background-color: #f9fafb;
+}
+
+.rdrStaticRange {
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.rdrStaticRange:hover .rdrStaticRangeLabel {
+    background: #f3f4f6;
+}
+
+.rdrInputRange {
+    padding: 10px 0;
+}
+
+.rdrInputRangeInput {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+}
+
+/* Field Selector Styles */
+.aco-field-selector {
+    background: #f9fafb;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.aco-field-selector h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.aco-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.aco-tab {
+    padding: 10px 16px;
+    border: none;
+    background: none;
+    color: #4b5563;
+    font-weight: 500;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.aco-tab:hover {
+    color: #2271b1;
+}
+
+.aco-tab.active {
+    color: #2271b1;
+    border-bottom: 2px solid #2271b1;
+}
+
+.aco-field-list-container {
+    background: #fff;
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid #e5e7eb;
+}
+
+.aco-select-all-wrapper {
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.aco-select-all-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.aco-draggable-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.aco-draggable-item {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #e5e7eb;
+    margin: 4px 0;
+    transition: all 0.2s;
+}
+
+.aco-draggable-item:hover {
+    background: #f3f4f6;
+}
+
+.aco-draggable-item.dragging {
+    background: #f3f4f6;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.aco-drag-handle {
+    color: #9ca3af;
+    cursor: grab;
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.aco-field-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    cursor: pointer;
+}
+
+.aco-tab-content {
+    margin-top: 16px;
+}
+
+.aco-selected-count {
+    margin-top: 12px;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+/* Format Selector Styles */
+.aco-format-selector {
+    background: #f9fafb;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.aco-format-selector h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.aco-format-options {
+    display: flex;
+    gap: 24px;
+}
+
+.aco-format-options label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 12px 16px;
+    background: #fff;
+    border-radius: 6px;
+    border: 1px solid #e5e7eb;
+    transition: all 0.2s;
+}
+
+.aco-format-options label:hover {
+    background: #f3f4f6;
+}
+
+/* Button Styles */
+button[type="submit"] {
+    background: #2271b1;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 6px;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+button[type="submit"]:hover {
+    background: #135e96;
+}
+
+button[type="submit"]:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+}
+
+/* Status Messages */
+.aco-loading {
+    padding: 20px;
+    text-align: center;
+    font-style: italic;
+}
+
+.aco-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.aco-export-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.aco-export-success {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.aco-section-title {
+    margin: 16px 0 8px;
+    font-size: 14px;
+    color: #4b5563;
+    font-weight: 600;
+}
+
+.aco-empty-selection, .aco-empty-fields {
+    padding: 12px;
+    background: #f3f4f6;
+    border-radius: 6px;
+    color: #6b7280;
+    text-align: center;
+    font-style: italic;
+}
+
+.aco-draggable-item.selected {
+    background: #edf5ff;
+    border-color: #2271b1;
+}
+
+.aco-available-fields {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    padding: 4px;
+}

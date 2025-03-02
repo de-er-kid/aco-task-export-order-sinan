@@ -1,0 +1,65 @@
+# .gitignore for ACO Task Export Order Plugin
+
+# General OS and editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.log
+*.bak
+~$*
+
+# Node.js dependencies (for React app)
+admin/react-app/node_modules/
+
+# Build artifacts
+admin/react-app/build/
+admin/react-app/dist/
+admin/react-app/.cache/
+admin/react-app/coverage/
+
+# Dependency directories
+# vendor/
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Editor directories
+.vscode/
+.idea/
+
+# WordPress specific ignores
+wp-content/uploads/wc-exports/
+wp-content/uploads/wc-logs/
+
+# PHP related
+composer.phar
+composer.lock
+.phpcs.cache
+
+# Webpack/build files
+assets/
+*.map
+
+# Local/test configurations
+wp-config-local.php
+wp-config.php~
+
+# Debug logs
+debug.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Package manager files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# WordPress.org assets (if submitting to directory)
+.svn/
