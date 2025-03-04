@@ -87,13 +87,20 @@ class ACO_Export_Orders_API {
         global $wpdb;
         $addon_fields = array();
         
+        // Query for both product addons and custom order item meta
         $query = "
+            SELECT DISTINCT meta_key 
+            FROM {$wpdb->prefix}woocommerce_order_itemmeta 
+            WHERE meta_key NOT LIKE '\_%'
+            AND meta_key NOT IN ('_product_id', '_variation_id', '_qty', '_tax_class', '_line_subtotal', '_line_subtotal_tax', '_line_total', '_line_tax', '_line_tax_data')
+            UNION
             SELECT DISTINCT meta_key 
             FROM {$wpdb->prefix}woocommerce_order_itemmeta 
             WHERE meta_key LIKE '%_wcpa_%' 
             OR meta_key LIKE '%addon%' 
             OR meta_key LIKE '%custom_field%' 
             OR meta_key LIKE '%wcpb_%'
+            OR meta_key LIKE '%_custom_%'
         ";
         
         $results = $wpdb->get_results($query);
@@ -101,12 +108,33 @@ class ACO_Export_Orders_API {
         if ($results) {
             foreach ($results as $result) {
                 $meta_key = $result->meta_key;
-                $label = ucwords(str_replace(array('_', '-'), ' ', $meta_key));
+                // Clean up the label
+                $label = preg_replace('/^_/', '', $meta_key); // Remove leading underscore
+                $label = str_replace(array('wcpa_', 'addon_', 'custom_field_', 'wcpb_', 'custom_'), '', $label);
+                $label = ucwords(str_replace(array('_', '-'), ' ', $label));
                 $addon_fields[$meta_key] = $label;
             }
+            
+            // Sort fields alphabetically by label
+            asort($addon_fields);
         }
         
         return $addon_fields;
+    }
+    
+    private function get_order_item_meta_value($item_id, $meta_key) {
+        global $wpdb;
+        
+        $value = $wpdb->get_var($wpdb->prepare(
+            "SELECT meta_value 
+            FROM {$wpdb->prefix}woocommerce_order_itemmeta 
+            WHERE order_item_id = %d 
+            AND meta_key = %s",
+            $item_id,
+            $meta_key
+        ));
+        
+        return maybe_unserialize($value);
     }
     
     public function export_orders($request) {

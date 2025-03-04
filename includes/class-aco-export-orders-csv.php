@@ -248,13 +248,14 @@ class ACO_Export_Orders_CSV {
                     break;
         
                 default:
-                    // Check if it's a custom addon field
-                    if ($item && substr($field, 0, 1) === '_') {
+                    // Handle custom order item meta
+                    if ($item) {
                         $meta_value = wc_get_order_item_meta($item->get_id(), $field, true);
-                        $data[] = $meta_value;
-                    } elseif ($item) {
-                        $meta_value = wc_get_order_item_meta($item->get_id(), $field, true);
-                        $data[] = $meta_value;
+                        if (is_array($meta_value)) {
+                            $data[] = implode(', ', array_map('strval', $meta_value));
+                        } else {
+                            $data[] = strval($meta_value);
+                        }
                     } else {
                         $data[] = '';
                     }

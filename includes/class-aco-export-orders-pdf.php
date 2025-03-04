@@ -369,12 +369,26 @@ class ACO_Export_Orders_PDF {
                     // Check if it's a custom addon field
                     if ($item && substr($field, 0, 1) === '_') {
                         $meta_value = wc_get_order_item_meta($item->get_id(), $field, true);
-                        $data[] = $meta_value;
-                    } elseif ($item) {
-                        $meta_value = wc_get_order_item_meta($item->get_id(), $field, true);
-                        $data[] = $meta_value;
+                        // Ensure the value is properly formatted for PDF
+                        if (is_array($meta_value) || is_object($meta_value)) {
+                            $data[] = json_encode($meta_value);
+                        } else {
+                            $data[] = strval($meta_value);
+                        }
                     } else {
-                        $data[] = '';
+                        // Handle custom order item meta
+                        if ($item) {
+                            $meta_value = wc_get_order_item_meta($item->get_id(), $field, true);
+                            if (is_array($meta_value) || is_object($meta_value)) {
+                                $data[] = json_encode($meta_value);
+                            } elseif ($meta_value !== null && $meta_value !== '') {
+                                $data[] = strval($meta_value);
+                            } else {
+                                $data[] = '';
+                            }
+                        } else {
+                            $data[] = '';
+                        }
                     }
                     break;
             }
