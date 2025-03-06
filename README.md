@@ -88,7 +88,8 @@ Retrieves all available fields that can be exported.
     "shipping_first_name": "Shipping First Name",
     "shipping_last_name": "Shipping Last Name"
   }
-}```
+}
+```
 #### 2. Export Orders
 Generates an export file based on provided parameters.
 
