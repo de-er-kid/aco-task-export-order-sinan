@@ -148,10 +148,50 @@ curl -X POST \
     "format": "csv"
   }'
  ```
-### Using the WordPress REST API Testing Tool
-1. Install and activate the REST API Toolbox plugin
-2. Navigate to Tools > REST API Toolbox
-3. Use the interface to test your endpoints
+### Using Postman for API Testing
+1. Set up a new request in Postman :
+   
+   - Create a new request with the appropriate method (GET for fields, POST for export)
+   - Enter the endpoint URL (e.g., `https://your-site.com/wp-json/aco-export/v1/fields` )
+2. Authentication setup :
+   
+   - In the Authorization tab, select "Basic Auth"
+   - Enter your WordPress username and application password (see below for how to generate one)
+3. For POST requests :
+   
+   - Go to the Body tab
+   - Select "raw" and "JSON" format
+   - Enter your request body, for example:
+     ```json
+     {
+       "start_date": "2023-01-01",
+       "end_date": "2023-01-31",
+       "fields": ["order_number", "order_date", "order_total"],
+       "format": "csv"
+     }
+      ```
+     ```
+4. Send the request and view the response
+### Generating WordPress Application Passwords
+To authenticate API requests, you can use WordPress Application Passwords:
+
+1. Access your WordPress profile :
+   
+   - Log in to your WordPress admin dashboard
+   - Navigate to Users → Profile (or Your Profile)
+2. Generate an application password :
+   
+   - Scroll down to the "Application Passwords" section
+   - Enter a name for the application (e.g., "API Testing")
+   - Click "Add New Application Password"
+   - WordPress will generate a password - copy it immediately as it won't be shown again
+3. Use in API requests :
+   
+   - Use your WordPress username and the generated application password for Basic Authentication
+   - In Postman, enter these credentials in the Authorization tab
+   - For cURL, use: `-u "username:application_password"`
+Note : Application Passwords require WordPress 5.6 or higher and are only available over HTTPS connections for security reasons.
+
 ## Troubleshooting
 
 ### Common Issues
