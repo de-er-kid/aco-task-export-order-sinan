@@ -170,7 +170,6 @@ curl -X POST \
        "format": "csv"
      }
       ```
-     ```
 4. Send the request and view the response
 ### Generating WordPress Application Passwords
 To authenticate API requests, you can use WordPress Application Passwords:
