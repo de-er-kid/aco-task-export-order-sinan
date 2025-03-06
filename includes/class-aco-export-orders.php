@@ -31,6 +31,8 @@ class ACO_Export_Orders {
         
         // Add Export Orders button to WooCommerce Orders page
         add_action('admin_head', array($this, 'add_export_orders_button'));
+
+        add_filter('plugin_action_links_' . ACO_EXPORT_ORDERS_PLUGIN_BASENAME, array($this, 'add_plugin_action_links'));
     }
 
     private function define_api_hooks() {
@@ -97,5 +99,11 @@ class ACO_Export_Orders {
 
     public function run() {
         // The plugin is now running
+    }
+
+    public function add_plugin_action_links($links) {
+        $settings_link = '<a href="' . admin_url('admin.php?page=aco-export-orders') . '">' . __('Export Orders', 'aco-task-export-order-sinan') . '</a>';
+        array_unshift($links, $settings_link);
+        return $links;
     }
 }
