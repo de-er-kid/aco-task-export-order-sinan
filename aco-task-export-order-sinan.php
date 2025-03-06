@@ -1,9 +1,11 @@
 <?php
 /**
  * Plugin Name: ACO Task Export WooCommerce Orders
+ * Plugin URI: https://github.com/de-er-kid/aco-task-export-order-sinan
  * Description: A plugin to export WooCommerce orders by date range with customizable fields to CSV or PDF.
  * Version: 1.0.0
  * Author: Sinan
+ * Author URI: https://github.com/de-er-kid
  * Text Domain: aco-task-export-order-sinan
  * WC requires at least: 3.0.0
  * WC tested up to: 7.0.0
