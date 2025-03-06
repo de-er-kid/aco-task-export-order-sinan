@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-// Import the new dnd-kit libraries at the top of your file
 import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors, DragOverlay } from '@dnd-kit/core';
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, useSortable, horizontalListSortingStrategy } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
@@ -81,8 +80,8 @@ const FieldSelector = ({ fields, selectedFields, onChange }) => {
             useSensor(PointerSensor, {
                 // Make dragging more responsive with lower activation threshold
                 activationConstraint: {
-                    distance: 3, // Reduced from 5
-                    tolerance: 3, // Reduced from 5
+                    distance: 3,
+                    tolerance: 3,
                     delay: 0,
                 },
             }),
