@@ -182,9 +182,6 @@ class ACO_Export_Orders_PDF {
         // Determine page width based on orientation
         $page_width = ($orientation === 'P') ? $dimensions[0] : $dimensions[1];
         
-        // Subtract margins to get content width
-        // Assuming left and right margins are both PDF_MARGIN_LEFT and PDF_MARGIN_RIGHT respectively
-        // Using approximate values here: 15mm for each side
         $margin_left = defined('PDF_MARGIN_LEFT') ? PDF_MARGIN_LEFT : 15;
         $margin_right = defined('PDF_MARGIN_RIGHT') ? PDF_MARGIN_RIGHT : 15;
         

@@ -115,7 +115,6 @@ class ACO_Export_Orders_API {
                 $addon_fields[$meta_key] = $label;
             }
             
-            // Sort fields alphabetically by label
             asort($addon_fields);
         }
         

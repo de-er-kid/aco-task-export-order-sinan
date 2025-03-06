@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+// import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors, DragOverlay } from '@dnd-kit/core';
 import { arrayMove, SortableContext, sortableKeyboardCoordinates, useSortable, horizontalListSortingStrategy } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
@@ -7,10 +7,8 @@ import { CSS } from '@dnd-kit/utilities';
 const FieldSelector = ({ fields, selectedFields, onChange }) => {
     const [activeTab, setActiveTab] = useState('standard');
     const [allFields, setAllFields] = useState({});
-    // Add state to track the active (currently dragged) item
     const [activeId, setActiveId] = useState(null);
 
-    // Combine all fields for better tracking
     useEffect(() => {
         const combined = {
             ...fields.standard,
@@ -38,10 +36,8 @@ const FieldSelector = ({ fields, selectedFields, onChange }) => {
     };
 
     const handleDragEnd = (result) => {
-        // Drop outside the list
         if (!result.destination) return;
         
-        // No position change
         if (result.destination.index === result.source.index) return;
 
         const items = Array.from(selectedFields);
@@ -52,21 +48,17 @@ const FieldSelector = ({ fields, selectedFields, onChange }) => {
     };
 
     const getFieldLabel = (key, categoryFields) => {
-        // Handle both string values and object values
         const fieldValue = categoryFields[key];
         return typeof fieldValue === 'string' ? fieldValue : fieldValue?.label || key;
     };
 
-    // Replace the renderFieldList function with this updated version
     const renderFieldList = (category) => {
         const categoryFields = fields[category] || {};
         
-        // Create an array of selected fields from this category in their current order
         const selectedFromCategory = selectedFields.filter(field => 
             Object.keys(categoryFields).includes(field)
         );
         
-        // Create an array of unselected fields from this category
         const unselectedFromCategory = Object.keys(categoryFields).filter(
             field => !selectedFields.includes(field)
         );
@@ -75,10 +67,8 @@ const FieldSelector = ({ fields, selectedFields, onChange }) => {
             return <div className="aco-empty-fields">No fields available in this category</div>;
         }
     
-        // Set up sensors with improved activation constraints
         const sensors = useSensors(
             useSensor(PointerSensor, {
-                // Make dragging more responsive with lower activation threshold
                 activationConstraint: {
                     distance: 3,
                     tolerance: 3,
@@ -90,52 +80,40 @@ const FieldSelector = ({ fields, selectedFields, onChange }) => {
             })
         );
     
-        // Add handlers for drag start and drag end
         const handleDragStart = (event) => {
             const { active } = event;
             setActiveId(active.id);
             
-            // Add a class to the body to indicate dragging is in progress
             document.body.classList.add('aco-dragging-in-progress');
         };
         
         const handleDragEndNew = (event) => {
             const { active, over } = event;
             
-            // Reset active ID
             setActiveId(null);
             
-            // Remove the dragging class
             document.body.classList.remove('aco-dragging-in-progress');
             
-            // Only proceed if we have both active and over items
             if (!active || !over) return;
             
             if (active.id !== over.id) {
                 const oldIndex = selectedFromCategory.indexOf(active.id);
                 const newIndex = selectedFromCategory.indexOf(over.id);
                 
-                // Validate indices to prevent errors
                 if (oldIndex === -1 || newIndex === -1) return;
                 
-                // Create a copy of the selected fields
                 const newSelectedFields = [...selectedFields];
                 
-                // Get the reordered fields for this category
                 const reorderedCategoryFields = arrayMove(selectedFromCategory, oldIndex, newIndex);
                 
-                // Remove all selected fields from this category
                 const fieldsWithoutCategory = newSelectedFields.filter(field => 
                     !Object.keys(categoryFields).includes(field)
                 );
                 
-                // Add back the reordered fields
                 const updatedFields = [...fieldsWithoutCategory, ...reorderedCategoryFields];
                 
-                // Use onChange to update the parent component
                 onChange(updatedFields);
                 
-                // Add a class to the item for animation
                 setTimeout(() => {
                     const items = document.querySelectorAll('.aco-draggable-item');
                     items.forEach(item => {
@@ -150,7 +128,6 @@ const FieldSelector = ({ fields, selectedFields, onChange }) => {
             }
         };
     
-        // Enhanced SortableItem component with improved visual feedback
         const SortableItem = ({ id }) => {
             const {
                 attributes,
@@ -171,7 +148,7 @@ const FieldSelector = ({ fields, selectedFields, onChange }) => {
                 transform: CSS.Transform.toString(transform),
                 transition,
                 zIndex: isDragging ? 999 : 1,
-                opacity: isDragging ? 0.3 : 1, // Make the original item more transparent when dragging
+                opacity: isDragging ? 0.3 : 1,
                 position: 'relative',
             };
             
@@ -200,7 +177,6 @@ const FieldSelector = ({ fields, selectedFields, onChange }) => {
             );
         };
         
-        // Create a component for the drag overlay (the visual element that follows the cursor)
         const DragOverlayItem = ({ id }) => {
             if (!id) return null;
             
@@ -266,7 +242,6 @@ const FieldSelector = ({ fields, selectedFields, onChange }) => {
                         )}
                     </div>
                     
-                    {/* Add the DragOverlay component to show a visual representation during drag */}
                     <DragOverlay adjustScale={true} zIndex={1000}>
                         {activeId ? <DragOverlayItem id={activeId} /> : null}
                     </DragOverlay>

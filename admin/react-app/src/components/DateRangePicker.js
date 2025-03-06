@@ -15,7 +15,6 @@ const DateRangePicker = ({ startDate, endDate, onDateChange }) => {
     ]);
 
     useEffect(() => {
-        // Update local state when props change
         if (startDate || endDate) {
             setDateRange([
                 {

@@ -8,7 +8,9 @@
  * Author URI: https://github.com/de-er-kid
  * Text Domain: aco-task-export-order-sinan
  * WC requires at least: 3.0.0
- * WC tested up to: 7.0.0
+ * WC tested up to: 8.0.0
+ * Requires at least: 5.0
+ * Requires PHP: 7.2
  */
 
 // If this file is called directly, abort.
@@ -30,6 +32,13 @@ require_once ACO_EXPORT_ORDERS_PLUGIN_DIR . 'includes/class-aco-export-orders.ph
 // Register activation/deactivation hooks
 register_activation_hook(__FILE__, array('ACO_Export_Orders_Activator', 'activate'));
 register_deactivation_hook(__FILE__, array('ACO_Export_Orders_Deactivator', 'deactivate'));
+
+// Declare HPOS compatibility
+add_action('before_woocommerce_init', function() {
+    if (class_exists(\Automattic\WooCommerce\Utilities\FeaturesUtil::class)) {
+        \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility('custom_order_tables', __FILE__, true);
+    }
+});
 
 // Initialize the plugin
 function run_aco_export_orders() {

@@ -38,7 +38,7 @@ class ACO_Export_Orders_CSV {
             } elseif (isset($available_fields['addons'][$field])) {
                 $headers[] = $available_fields['addons'][$field];
             } else {
-                $headers[] = $field; // Use the field key if label not found
+                $headers[] = $field;
             }
         }
         
