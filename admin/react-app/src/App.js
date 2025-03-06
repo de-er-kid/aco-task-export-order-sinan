@@ -44,10 +44,17 @@ const App = () => {
             }
 
             const data = await response.json();
-            setFields(data);
             
-            // Set default fields
-            const defaultFields = Object.keys(data.standard).slice(0, 5);
+            // Ensure we have both standard and addons categories
+            const processedData = {
+                standard: data.standard || {},
+                addons: data.addons || {}
+            };
+            
+            setFields(processedData);
+            
+            // Set default fields - only from standard fields
+            const defaultFields = Object.keys(processedData.standard).slice(0, 5);
             setFormData(prev => ({
                 ...prev,
                 fields: defaultFields
